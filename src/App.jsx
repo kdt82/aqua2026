@@ -104,8 +104,17 @@ function App() {
 
       {/* Hero Section */}
       <section className="hero" id="hero">
-        {/* Optimized Hero Background for LCP */}
-        <img src="/aqua-hero.jpg" className="hero-bg" alt="" fetchpriority="high" width="1920" height="1080" />
+        {/* Optimized Hero Background for LCP - Responsive Sizes */}
+        <img
+          src="/aqua-hero.jpg"
+          srcSet="/aqua-hero-mobile.jpg 640w, /aqua-hero-tablet.jpg 1200w, /aqua-hero.jpg 1920w"
+          sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
+          className="hero-bg"
+          alt=""
+          fetchpriority="high"
+          width="1920"
+          height="1080"
+        />
 
         <div className="water-drops">
           {waterDrops.map(drop => (
