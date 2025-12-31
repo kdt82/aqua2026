@@ -1,5 +1,5 @@
 /* AQUA Meme Coin - Design System */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
 
 :root {
   /* Colors - Vibrant theme inspired by aquavibrant.png */
@@ -1639,7 +1639,9 @@ section {
 
 /* Mobile Fix: Hide full labels in supply bar to prevent squishing */
 @media (max-width: 480px) {
-  .segment-label, .supply-segment .segment-label {
+
+  .segment-label,
+  .supply-segment .segment-label {
     display: none !important;
   }
 }

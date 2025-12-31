@@ -211,7 +211,7 @@ function App() {
             </div>
 
             <div className="builders-visual">
-              <img src="/suibuilders.jpg" alt="SUI Builders" className="partner-image" width="375" height="375" />
+              <img src="/suibuilders.jpg" alt="SUI Builders" className="partner-image" width="375" height="375" loading="lazy" />
             </div>
           </div>
         </div>
@@ -222,7 +222,7 @@ function App() {
         <div className="container">
           <div className="about-content">
             <div className="about-image">
-              <img src="/aqua-icon.jpg" alt="AQUA Cat" width="400" height="400" />
+              <img src="/aqua-icon.jpg" alt="AQUA Cat" width="400" height="400" loading="lazy" />
             </div>
 
             <div className="about-text">
@@ -496,7 +496,7 @@ function App() {
             <div className="footer-main">
               <div className="footer-brand">
                 <div className="footer-logo">
-                  <img src="/aqua-icon.jpg" alt="AQUA" width="60" height="60" />
+                  <img src="/aqua-icon.jpg" alt="AQUA" width="60" height="60" loading="lazy" />
                   <span className="gradient-text">$AQUA</span>
                 </div>
                 <div className="built-on-sui">
