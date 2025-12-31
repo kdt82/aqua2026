@@ -72,7 +72,7 @@ function App() {
       <header className="header">
         <div className="container">
           <a href="#" className="logo">
-            <img src="/aqua-icon.jpg" alt="AQUA" width="48" height="48" />
+            <img src="/aqua-icon.webp" alt="AQUA" width="48" height="48" />
             <span>$AQUA</span>
           </a>
 
@@ -86,35 +86,42 @@ function App() {
             </ul>
 
             <div className="social-links">
-              <a href="https://t.me/AQUA_CAT_ON_SUI" target="_blank" rel="noopener noreferrer" title="Telegram">
+              <a href="https://t.me/AQUA_CAT_ON_SUI" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Join our Telegram Community">
                 <MessageCircle size={20} />
               </a>
-              <a href="https://x.com/AQUA_on_SUI" target="_blank" rel="noopener noreferrer" title="X/Twitter">
+              <a href="https://x.com/AQUA_on_SUI" target="_blank" rel="noopener noreferrer" title="X/Twitter" aria-label="Follow us on X (Twitter)">
                 <Twitter size={20} />
               </a>
-              <a href="https://dexscreener.com/sui/0x78f5e63a1732220b1f4d575e94d61d25d5416aa77f4387cd763366fde463f6e8" target="_blank" rel="noopener noreferrer" title="DexScreener">
+              <a href="https://dexscreener.com/sui/0x78f5e63a1732220b1f4d575e94d61d25d5416aa77f4387cd763366fde463f6e8" target="_blank" rel="noopener noreferrer" title="DexScreener" aria-label="View on DexScreener">
                 <BarChart3 size={20} />
               </a>
             </div>
           </nav>
 
-          <button className="mobile-menu-btn"><Menu size={24} /></button>
+          <button className="mobile-menu-btn" aria-label="Open Menu"><Menu size={24} /></button>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="hero" id="hero">
-        {/* Optimized Hero Background for LCP - Responsive Sizes */}
-        <img
-          src="/aqua-hero.jpg"
-          srcSet="/aqua-hero-mobile.jpg 640w, /aqua-hero-tablet.jpg 1200w, /aqua-hero.jpg 1920w"
-          sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
-          className="hero-bg"
-          alt=""
-          fetchpriority="high"
-          width="1920"
-          height="1080"
-        />
+        {/* Optimized Hero Background for LCP - WebP + Responsive Sizes */}
+        <picture className="hero-bg-wrapper">
+          <source
+            srcSet="/aqua-hero-mobile.webp 640w, /aqua-hero-tablet.webp 1200w, /aqua-hero.webp 1920w"
+            sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            type="image/webp"
+          />
+          <img
+            src="/aqua-hero.jpg"
+            srcSet="/aqua-hero-mobile.jpg 640w, /aqua-hero-tablet.jpg 1200w, /aqua-hero.jpg 1920w"
+            sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            className="hero-bg"
+            alt="AQUA Background"
+            fetchpriority="high"
+            width="1920"
+            height="1080"
+          />
+        </picture>
 
         <div className="water-drops">
           {waterDrops.map(drop => (
@@ -149,11 +156,11 @@ function App() {
             <div className="hero-actions">
               <h3 className="buy-heading">Buy $AQUA Now</h3>
               <div className="hero-buttons">
-                <a href="https://app.cetus.zone/swap/0x2::sui::SUI/0xab954d078dab0a6727ce58388931850be4bdb6f72703ea3cad3d6eb0c12a0283::aqua::AQUA" className="logo-btn" target="_blank" rel="noopener noreferrer">
-                  <img src="/cetus-logo.png" alt="Buy on Cetus" width="120" height="40" />
+                <a href="https://app.cetus.zone/swap/0x2::sui::SUI/0xab954d078dab0a6727ce58388931850be4bdb6f72703ea3cad3d6eb0c12a0283::aqua::AQUA" className="logo-btn" target="_blank" rel="noopener noreferrer" aria-label="Buy AQUA on Cetus">
+                  <img src="/cetus-logo.webp" alt="Buy on Cetus" width="120" height="40" />
                 </a>
-                <a href="https://dex.suidex.org" className="logo-btn" target="_blank" rel="noopener noreferrer">
-                  <img src="/suidex-logo.png" alt="Buy on SUIDEX" width="120" height="40" />
+                <a href="https://dex.suidex.org" className="logo-btn" target="_blank" rel="noopener noreferrer" aria-label="Buy AQUA on SUIDEX">
+                  <img src="/suidex-logo.webp" alt="Buy on SUIDEX" width="120" height="40" />
                 </a>
               </div>
 
@@ -224,7 +231,7 @@ function App() {
             </div>
 
             <div className="builders-visual">
-              <img src="/suibuilders.jpg" alt="SUI Builders" className="partner-image" width="375" height="375" loading="lazy" />
+              <img src="/suibuilders.webp" alt="SUI Builders" className="partner-image" width="375" height="375" loading="lazy" />
             </div>
           </div>
         </div>
@@ -235,7 +242,7 @@ function App() {
         <div className="container">
           <div className="about-content">
             <div className="about-image">
-              <img src="/aqua-icon.jpg" alt="AQUA Cat" width="400" height="400" loading="lazy" />
+              <img src="/aqua-icon.webp" alt="AQUA Cat" width="400" height="400" loading="lazy" />
             </div>
 
             <div className="about-text">
