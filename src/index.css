@@ -1277,23 +1277,79 @@ section {
   }
 
   .supply-bar {
-    flex-direction: column;
-    height: auto;
+    height: 36px;
+    border-radius: 18px;
   }
 
   .supply-segment {
-    width: 100% !important;
-    height: 40px;
-    border-radius: 8px;
+    font-size: 0.75rem;
+    padding: 0 2px;
+    line-height: 1.2;
+  }
+
+  .supply-segment .segment-label,
+  span.segment-label {
+    display: none !important;
+  }
+
+  .supply-segment span {
+    white-space: nowrap;
+    display: block;
   }
 
   .supply-stats {
-    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .supply-title {
+    font-size: 1.2rem;
+  }
+
+  .supply-bar-container {
+    padding: 20px 16px;
   }
 
   .footer-main {
     flex-direction: column;
     gap: 32px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .supply-bar {
+    height: 32px;
+    border-radius: 16px;
+  }
+
+  .supply-segment {
+    font-size: 0.65rem;
+    padding: 0 1px;
+    line-height: 1.2;
+  }
+
+  .supply-title {
+    font-size: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  .supply-stats {
+    gap: 12px;
   }
 }
 
@@ -1579,4 +1635,11 @@ section {
 .footer-bottom .copyright {
   color: var(--text-muted);
   font-size: 0.875rem;
+}
+
+/* Mobile Fix: Hide full labels in supply bar to prevent squishing */
+@media (max-width: 480px) {
+  .segment-label, .supply-segment .segment-label {
+    display: none !important;
+  }
 }

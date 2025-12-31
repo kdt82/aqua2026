@@ -258,13 +258,13 @@ function App() {
             <h3 className="supply-title">Total Supply: 1 Billion $AQUA</h3>
             <div className="supply-bar">
               <div className="supply-segment circulating" style={{ width: '75%' }}>
-                <span>Circulating 75%</span>
+                <span><span className="segment-label">Circulating </span>75%</span>
               </div>
               <div className="supply-segment staked" style={{ width: '15%' }}>
-                <span>Staked 15%+</span>
+                <span><span className="segment-label">Staked </span>15%+</span>
               </div>
               <div className="supply-segment locked" style={{ width: '10%' }}>
-                <span>Locked 10%</span>
+                <span><span className="segment-label">Locked </span>10%</span>
               </div>
             </div>
             <div className="supply-stats">
