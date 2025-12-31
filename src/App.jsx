@@ -71,7 +71,7 @@ function App() {
       <header className="header">
         <div className="container">
           <a href="#" className="logo">
-            <img src="/aqua-icon.jpg" alt="AQUA" />
+            <img src="/aqua-icon.jpg" alt="AQUA" width="48" height="48" />
             <span>$AQUA</span>
           </a>
 
@@ -137,10 +137,10 @@ function App() {
               <h3 className="buy-heading">Buy $AQUA Now</h3>
               <div className="hero-buttons">
                 <a href="https://app.cetus.zone/swap/0x2::sui::SUI/0xab954d078dab0a6727ce58388931850be4bdb6f72703ea3cad3d6eb0c12a0283::aqua::AQUA" className="logo-btn" target="_blank" rel="noopener noreferrer">
-                  <img src="/cetus-logo.png" alt="Buy on Cetus" />
+                  <img src="/cetus-logo.png" alt="Buy on Cetus" width="120" height="40" />
                 </a>
                 <a href="https://dex.suidex.org" className="logo-btn" target="_blank" rel="noopener noreferrer">
-                  <img src="/suidex-logo.png" alt="Buy on SUIDEX" />
+                  <img src="/suidex-logo.png" alt="Buy on SUIDEX" width="120" height="40" />
                 </a>
               </div>
 
@@ -211,7 +211,7 @@ function App() {
             </div>
 
             <div className="builders-visual">
-              <img src="/suibuilders.jpg" alt="SUI Builders" className="partner-image" />
+              <img src="/suibuilders.jpg" alt="SUI Builders" className="partner-image" width="375" height="375" />
             </div>
           </div>
         </div>
@@ -222,7 +222,7 @@ function App() {
         <div className="container">
           <div className="about-content">
             <div className="about-image">
-              <img src="/aqua-icon.jpg" alt="AQUA Cat" />
+              <img src="/aqua-icon.jpg" alt="AQUA Cat" width="400" height="400" />
             </div>
 
             <div className="about-text">
@@ -496,7 +496,7 @@ function App() {
             <div className="footer-main">
               <div className="footer-brand">
                 <div className="footer-logo">
-                  <img src="/aqua-icon.jpg" alt="AQUA" />
+                  <img src="/aqua-icon.jpg" alt="AQUA" width="60" height="60" />
                   <span className="gradient-text">$AQUA</span>
                 </div>
                 <div className="built-on-sui">
