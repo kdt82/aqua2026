@@ -1355,7 +1355,11 @@ section {
 
 /* Rotating Headline */
 .rotating-headline {
-  min-height: 1.2em;
+  min-height: 1.5em;
+  /* Scales with font size */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .rotating-headline .gradient-text {
