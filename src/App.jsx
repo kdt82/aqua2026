@@ -57,13 +57,14 @@ function App() {
     setTimeout(() => setFooterCopied(false), 2000);
   };
 
-  // Generate water drops
-  const waterDrops = Array.from({ length: 20 }, (_, i) => ({
+  // Generate water drops (Memoized to prevent re-calculation on every render)
+  // We use a fixed seed-like approach or just generate once
+  const [waterDrops] = useState(() => Array.from({ length: 20 }, (_, i) => ({
     id: i,
     left: `${Math.random() * 100}%`,
     delay: `${Math.random() * 5}s`,
     duration: `${2 + Math.random() * 3}s`
-  }));
+  })));
 
   return (
     <>
@@ -103,6 +104,9 @@ function App() {
 
       {/* Hero Section */}
       <section className="hero" id="hero">
+        {/* Optimized Hero Background for LCP */}
+        <img src="/aqua-hero.jpg" className="hero-bg" alt="" fetchpriority="high" width="1920" height="1080" />
+
         <div className="water-drops">
           {waterDrops.map(drop => (
             <div

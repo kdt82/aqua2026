@@ -315,10 +315,18 @@ h3 {
   position: relative;
   padding: 120px 0 80px;
   overflow: hidden;
-  background: url('/aqua-hero.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Background image moved to HTML <img> for LCP optimization */
+}
+
+/* LCP Optimized Hero Background */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .hero::before {
@@ -334,11 +342,13 @@ h3 {
     radial-gradient(ellipse at 80% 30%, rgba(255, 184, 0, 0.2) 0%, transparent 50%),
     radial-gradient(ellipse at 20% 70%, rgba(74, 158, 255, 0.15) 0%, transparent 50%);
   pointer-events: none;
+  z-index: 1;
+  /* Overlay on top of image */
 }
 
 .hero .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-grid {
