@@ -1,0 +1,40 @@
+# AQUA Website - Static React Frontend
+# Deploy: docker compose up -d --build
+
+services:
+  aqua-website:
+    build: .
+    container_name: aqua-website
+    restart: unless-stopped
+    expose:
+      - "80"
+    labels:
+      # Enable Traefik
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+
+      # Main domain router
+      - "traefik.http.routers.aqua.rule=Host(`aquacatcoin.xyz`)"
+      - "traefik.http.routers.aqua.entrypoints=https"
+      - "traefik.http.routers.aqua.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.aqua.service=aqua"
+
+      # WWW redirect router
+      - "traefik.http.routers.aqua-www.rule=Host(`www.aquacatcoin.xyz`)"
+      - "traefik.http.routers.aqua-www.entrypoints=https"
+      - "traefik.http.routers.aqua-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.aqua-www.middlewares=aqua-www-redirect"
+
+      # WWW to non-WWW redirect middleware
+      - "traefik.http.middlewares.aqua-www-redirect.redirectregex.regex=^https://www\\.aquacatcoin\\.xyz/(.*)"
+      - "traefik.http.middlewares.aqua-www-redirect.redirectregex.replacement=https://aquacatcoin.xyz/$${1}"
+      - "traefik.http.middlewares.aqua-www-redirect.redirectregex.permanent=true"
+
+      # Service definition
+      - "traefik.http.services.aqua.loadbalancer.server.port=80"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
