@@ -13,15 +13,26 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
 
-      # Main domain router
+      # HTTP router (for ACME challenge and redirect)
+      - "traefik.http.routers.aqua-http.rule=Host(`aquacatcoin.xyz`) || Host(`www.aquacatcoin.xyz`)"
+      - "traefik.http.routers.aqua-http.entrypoints=http"
+      - "traefik.http.routers.aqua-http.middlewares=aqua-https-redirect"
+
+      # HTTP to HTTPS redirect middleware
+      - "traefik.http.middlewares.aqua-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.aqua-https-redirect.redirectscheme.permanent=true"
+
+      # HTTPS router - main domain
       - "traefik.http.routers.aqua.rule=Host(`aquacatcoin.xyz`)"
       - "traefik.http.routers.aqua.entrypoints=https"
+      - "traefik.http.routers.aqua.tls=true"
       - "traefik.http.routers.aqua.tls.certresolver=letsencrypt"
       - "traefik.http.routers.aqua.service=aqua"
 
-      # WWW redirect router
+      # HTTPS router - www redirect
       - "traefik.http.routers.aqua-www.rule=Host(`www.aquacatcoin.xyz`)"
       - "traefik.http.routers.aqua-www.entrypoints=https"
+      - "traefik.http.routers.aqua-www.tls=true"
       - "traefik.http.routers.aqua-www.tls.certresolver=letsencrypt"
       - "traefik.http.routers.aqua-www.middlewares=aqua-www-redirect"
 
