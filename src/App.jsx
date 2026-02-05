@@ -7,7 +7,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={
+          window.location.hostname.startsWith('memecomp')
+            ? <MemeCompetition />
+            : <Home />
+        } />
         <Route path="/memecomp" element={<MemeCompetition />} />
       </Routes>
     </Router>
