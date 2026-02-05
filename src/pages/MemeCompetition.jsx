@@ -37,40 +37,60 @@ export default function MemeCompetition() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("🚀 Starting submission process...");
 
         if (!turnstileToken) {
+            console.error("❌ No Turnstile token present.");
             alert("Please complete the captcha challenge.");
             return;
         }
 
         setStatus('submitting');
+        console.log("📦 Form Data:", formData);
+        console.log("🔑 Turnstile Token:", turnstileToken);
 
         try {
             const data = new FormData();
             Object.keys(formData).forEach(key => data.append(key, formData[key]));
-
-            // Append the token for backend validation
             data.append('cf-turnstile-response', turnstileToken);
 
+            console.log("🌐 Sending request to:", GOOGLE_SCRIPT_URL);
+
+            // removed 'no-cors' to attempt to read actual response errors
             const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                body: data,
-                mode: 'no-cors'
+                body: data
             });
 
-            // Since we use no-cors, we can't read the response JSON directly to check for success/failure
-            // But if it didn't throw network error, we assume it went through.
+            console.log("📨 Response Status:", response.status);
 
-            setStatus('success');
-            setFormData({ telegram: '', twitter: '', postLink: '', suiAddress: '' });
-            setTurnstileToken(null);
-            if (turnstileRef.current) {
-                turnstileRef.current.reset();
+            // Check if we can read the JSON
+            const result = await response.json();
+            console.log("📄 Response Body:", result);
+
+            if (result.result === 'success') {
+                setStatus('success');
+                setFormData({ telegram: '', twitter: '', postLink: '', suiAddress: '' });
+                setTurnstileToken(null);
+                if (turnstileRef.current) {
+                    turnstileRef.current.reset();
+                }
+            } else {
+                throw new Error(result.error || "Unknown server error");
             }
-
         } catch (err) {
-            console.error(err);
-            setStatus('error');
+            console.error("💥 Submission Error:", err);
+
+            // If it's a CORS error (common with Apps Script), we might fallback or warn
+            if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
+                console.warn("⚠️ CORS Error detected. The script might have executed, but we can't confirm. Check Google Sheet.");
+                // For debugging, we show error. In production, we might assume success if we trust the script.
+                setStatus('error');
+                alert("Network Error: Check the Console. If you see a CORS error, the backend might be blocking the response.");
+            } else {
+                setStatus('error');
+                alert("Submission Failed: " + err.message);
+            }
         }
     };
 
