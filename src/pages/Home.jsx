@@ -44,7 +44,7 @@ export default function Home() {
         setTimeout(() => setCopied(false), 2000);
     };
 
-})));
+}));
 
 // Promo Banner Component
 const PromoBanner = () => {
