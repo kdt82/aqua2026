@@ -1,7 +1,7 @@
 # Session Summary - 2026-02-06
 
 **Date**: 2026-02-06
-**Time**: 10:30 AM
+**Last Updated**: 11:45 AM
 
 ## Changes Implemented
 
@@ -23,14 +23,26 @@
 - Setup Google Apps Script to receive POST requests.
 - Integrated date formatting (`dd/MM/yyyy HH:mm:ss`).
 - Implemented Cloudflare Turnstile token validation on the backend.
+- **Troubleshooting**: Authorized `UrlFetchApp` permissions manually to allow Cloudflare verification requests.
 
 ### 4. Code Cleanup
 - Moved documentation files to `/docs/`.
 - Created `/devdocs/` for session tracking.
 - Removed temporary key files.
 
-## Next Steps
-- Push changes to GitHub.
-- Verify GitHub Action deployment.
-- Ensure VPS has Public Key authorized.
-- Ensure GitHub Secrets (`VPS_HOST`, `VPS_USERNAME`, `VPS_SSH_KEY`) and Variables (`TARGET_DIRECTORY`) are set.
+### 5. Infrastructure & Deployment (Late Morning Update)
+- **Traefik Routing**: Updated `docker-compose.yml` to includes labels for `memecomp.aquacatcoin.xyz`.
+    - Added dedicated HTTPS router.
+    - Updated HTTP -> HTTPS redirection rules to include the new subdomain.
+- **App Routing**: Modified `App.jsx` to handle subdomain-based routing.
+    - Requests to `memecomp.aquacatcoin.xyz/` now render the `MemeCompetition` component directly.
+- **Frontend fixes**:
+    - Updated `Header.jsx` to use absolute URLs for the Meme Comp link.
+    - Enabled verbose console logging in `MemeCompetition.jsx` for production debugging.
+    - Enabled standard CORS mode (removed `no-cors`) to allow better error visibility.
+
+## Current Status
+- **Frontend**: deployed and accessible at `https://memecomp.aquacatcoin.xyz`.
+- **Backend**: Google Apps Script deployed (v2) and fully authorized.
+- **Navigation**: Working correctly between main site and subdomain.
+- **Submission**: Verified working with Cloudflare Turnstile protection.
