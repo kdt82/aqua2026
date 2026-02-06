@@ -12,11 +12,11 @@ export default function Header() {
 
         <nav className="nav">
           <ul className="nav-links">
-            <li><a href="/#sui-builders">SUI Builders</a></li>
-            <li><a href="/#about">About</a></li>
-            <li><a href="/#tokenomics">Tokenomics</a></li>
-            <li><a href="/#roadmap">Roadmap</a></li>
-            <li><a href="/#how-to-buy">How to Buy</a></li>
+            <li><a href="https://aquacatcoin.xyz/#sui-builders">SUI Builders</a></li>
+            <li><a href="https://aquacatcoin.xyz/#about">About</a></li>
+            <li><a href="https://aquacatcoin.xyz/#tokenomics">Tokenomics</a></li>
+            <li><a href="https://aquacatcoin.xyz/#roadmap">Roadmap</a></li>
+            <li><a href="https://aquacatcoin.xyz/#how-to-buy">How to Buy</a></li>
             <li><a href="https://memecomp.aquacatcoin.xyz/" className="nav-link special-link">Meme Comp</a></li>
           </ul>
 
