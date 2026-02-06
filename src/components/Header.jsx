@@ -17,7 +17,7 @@ export default function Header() {
             <li><a href="/#tokenomics">Tokenomics</a></li>
             <li><a href="/#roadmap">Roadmap</a></li>
             <li><a href="/#how-to-buy">How to Buy</a></li>
-            <li><Link to="/memecomp" style={{ color: 'var(--accent-orange)' }}>Meme Comp</Link></li>
+            <li><a href="https://memecomp.aquacatcoin.xyz/" className="nav-link special-link">Meme Comp</a></li>
           </ul>
 
           <div className="social-links">
